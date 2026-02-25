@@ -390,34 +390,24 @@ async function cmdSearch(args) {
 
   // --- 기존 모드 (direct-send 아닐 때) ---
 
-  // --detail: ollama 요약 (기존 동작 유지)
   if (args.detail && rows.length) {
+    // --detail: 본문 미리보기 포함 (ollama 없이 원본 반환)
     const contentPreviews = [];
     for (const row of rows) {
       const contentSql = `SELECT REPLACE(REPLACE(LEFT(content, 1000), CHAR(10), ' '), CHAR(13), ' ') AS preview FROM xe_documents WHERE document_srl=${row.document_srl};`;
       const contentOut = await runQuery(contentSql);
       const contentRows = parseTable(contentOut);
       const preview = contentRows.length ? stripHtml(contentRows[0].preview) : '';
-      contentPreviews.push(`[${row.title}] (${formatDate(row.regdate)}, ${row.nick_name})\n${preview}`);
+      contentPreviews.push({
+        document_srl: row.document_srl, title: row.title,
+        nick_name: row.nick_name, regdate_formatted: formatDate(row.regdate),
+        preview
+      });
     }
-
-    const prompt = `/no_think\n다음은 사내 인트라넷 게시판 검색 결과입니다. 검색 조건: ${queryDesc}\n\n${contentPreviews.join('\n\n---\n\n')}\n\n위 내용을 한국어로 간결하게 요약해주세요. 각 글의 핵심 내용을 2-3줄로 정리하세요.`;
-
-    try {
-      const summary = await ollamaSummarize(prompt);
-      console.log(JSON.stringify({
-        ok: true, command: 'search', board: args.board, query: queryDesc,
-        count: rows.length, summary,
-        note: '원본 데이터는 로컬에서 요약되었습니다. 이 요약만 반환됩니다.'
-      }));
-    } catch (err) {
-      console.log(JSON.stringify({
-        ok: true, command: 'search', board: args.board, query: queryDesc,
-        count: rows.length,
-        results: rows.map(r => ({ title: r.title, nick_name: r.nick_name, regdate_formatted: formatDate(r.regdate) })),
-        warning: 'ollama 요약 실패: ' + err.message
-      }));
-    }
+    console.log(JSON.stringify({
+      ok: true, command: 'search', board: args.board, query: queryDesc,
+      count: rows.length, results: contentPreviews
+    }));
   } else {
     // 목록만
     console.log(JSON.stringify({
