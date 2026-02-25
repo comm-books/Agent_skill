@@ -187,14 +187,3 @@ node skills/intranet-search/cli.js search -b comm1 --date-from 2026-02-01 --date
 ### 레거시 (Python)
 
 `search.py`도 동일 기능을 제공하지만, 텍스트 출력 전용입니다.
-
-## Pub_Agent Compatibility
-
-이 스킬 리포는 [Pub_Agent](https://github.com/comm-books/Pub_Agent)의 AGENTS.md/TOOLS.md와 함께 사용됩니다.
-스킬 업데이트 시 Pub_Agent 쪽도 함께 업데이트해야 합니다.
-
-| 이 리포 커밋 | 설명 | Pub_Agent 호환 커밋 |
-|-------------|------|---------------------|
-| `da16f5f` | docs: Pub_Agent 호환 커밋 참조 테이블 추가 | `3036575` |
-| `506cfa0` | Google Chat 직접 전송, 패키지 설정 추가 | `438611a` |
-| `072a904` | Initial commit: intranet-search skill | _(사전)_ |
