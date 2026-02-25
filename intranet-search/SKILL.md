@@ -195,5 +195,6 @@ node skills/intranet-search/cli.js search -b comm1 --date-from 2026-02-01 --date
 
 | 이 리포 커밋 | 설명 | Pub_Agent 호환 커밋 |
 |-------------|------|---------------------|
+| `da16f5f` | docs: Pub_Agent 호환 커밋 참조 테이블 추가 | `3036575` |
 | `506cfa0` | Google Chat 직접 전송, 패키지 설정 추가 | `438611a` |
 | `072a904` | Initial commit: intranet-search skill | _(사전)_ |
