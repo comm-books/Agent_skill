@@ -40,7 +40,7 @@ node skills/gdrive-search/cli.js read 파일ID --user USER_ID
 
 | 이 리포 커밋 | 설명 | Pub_Agent 호환 커밋 |
 |-------------|------|---------------------|
-| _(다음)_ | feat: gdrive-search 스킬 추가 | _(다음)_ |
+| `a217e4f` | feat: gdrive-search 스킬 추가 | `9915f14` |
 | `aa335e2` | fix: ollama 요약 제거, 원본 미리보기 반환 | `534be78` |
 | `da16f5f` | docs: 호환 참조 테이블 추가 | `3036575` |
 | `506cfa0` | feat: Google Chat 직접 전송 추가 | `438611a` |
