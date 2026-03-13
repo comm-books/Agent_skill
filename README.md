@@ -61,6 +61,7 @@ node skills/gmail-search/cli.js read 메시지ID --user USER_ID
 
 | 이 리포 커밋 | 설명 | Pub_Agent 호환 커밋 |
 |-------------|------|---------------------|
+| `74be1ce` | feat: gmail-search 스킬 추가 | `1d78a18` |
 | `a217e4f` | feat: gdrive-search 스킬 추가 | `9915f14` |
 | `aa335e2` | fix: ollama 요약 제거, 원본 미리보기 반환 | `534be78` |
 | `da16f5f` | docs: 호환 참조 테이블 추가 | `3036575` |
